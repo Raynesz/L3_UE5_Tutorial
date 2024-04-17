@@ -22,6 +22,24 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	ItemDatabase = NewObject<UItemDatabase>(this, TEXT("ItemDatabase"));
+
+	if (ItemDatabase)
+	{
+		ItemDatabase->LoadItemsFromJson();
+		const TArray<FItemData>& ItemsArray = ItemDatabase->Items;
+
+		for (const FItemData& Item : ItemsArray)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("ItemName: %s"), *Item.ItemName.ToString());
+			UE_LOG(LogTemp, Warning, TEXT("Quality: %s"), *Item.Quality);
+			UE_LOG(LogTemp, Warning, TEXT("Level: %d"), Item.Level);
+			UE_LOG(LogTemp, Warning, TEXT("ItemType: %s"), *Item.ItemType);
+			UE_LOG(LogTemp, Warning, TEXT("UniqueEquipped: %s"), Item.UniqueEquipped ? TEXT("True") : TEXT("False"));
+			UE_LOG(LogTemp, Warning, TEXT("Mesh: %s"), *Item.Mesh);
+		}
+	}
+
 	InventoryWidget = CreateWidget<UInventoryWidget>(Cast<APlayerController>(GetController()), InventoryWidgetClass);
 	InteractWidget = CreateWidget(Cast<APlayerController>(GetController()), InteractWidgetClass);
 	InventoryWidget->AddToViewport(0);

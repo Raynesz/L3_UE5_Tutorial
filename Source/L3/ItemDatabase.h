@@ -21,6 +21,21 @@ struct FItemData {
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AItem> Class;
+
+	UPROPERTY(EditDefaultsOnly)
+	FString Quality;
+
+	UPROPERTY(EditDefaultsOnly)
+	int32 Level;
+
+	UPROPERTY(EditDefaultsOnly)
+	FString ItemType;
+
+	UPROPERTY(EditDefaultsOnly)
+	bool UniqueEquipped;
+
+	UPROPERTY(EditDefaultsOnly)
+	FString Mesh;
 };
 
 UCLASS()
@@ -39,4 +54,7 @@ class L3_API UItemDatabase : public UDataAsset
 public:
 	UPROPERTY(EditDefaultsOnly)
 	TArray<FItemData> Items;
+
+	UFUNCTION(BlueprintCallable)
+	void LoadItemsFromJson();
 };

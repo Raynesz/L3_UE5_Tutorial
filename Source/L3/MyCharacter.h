@@ -59,7 +59,6 @@ public:
 	UPROPERTY()
 	UUserWidget* InteractWidget;
 
-	UPROPERTY(EditDefaultsOnly)
 	UItemDatabase* ItemDatabase;
 
 	FVector InteractVectorEnd;
