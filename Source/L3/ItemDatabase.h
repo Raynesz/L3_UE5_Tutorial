@@ -8,7 +8,7 @@
 
 class AItem;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FItemData {
 	GENERATED_BODY()
 
@@ -16,11 +16,15 @@ struct FItemData {
 		return ItemName == Other.ItemName;
 	}
 
-	UPROPERTY(EditDefaultsOnly)
-	FName ItemName;
+	FItemData()
+		: Level(0), UniqueEquipped(false)
+	{
+	}
+
+	FGuid ItemGuid;
 
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AItem> Class;
+	FName ItemName;
 
 	UPROPERTY(EditDefaultsOnly)
 	FString Quality;
@@ -47,14 +51,26 @@ public:
 };
 
 UCLASS()
-class L3_API UItemDatabase : public UDataAsset
+class L3_API UItemDatabase : public UObject
 {
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	TArray<FItemData> Items;
+
+	UFUNCTION(BlueprintCallable, Category = "Item Database")
+	const TArray<FItemData>& GetItems() const;
 
 	UFUNCTION(BlueprintCallable)
 	void LoadItemsFromJson();
+
+	UFUNCTION(BlueprintCallable)
+	static UItemDatabase* GetInstance();
+
+	UFUNCTION(BlueprintCallable)
+	void DestroyItemDatabase();
+
+private:
+	static UItemDatabase* Instance;
 };

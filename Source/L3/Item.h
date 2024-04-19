@@ -14,4 +14,6 @@ class L3_API AItem : public AStaticMeshActor
 {
 	GENERATED_BODY()
 	
+public:
+	FGuid ItemGuid;
 };

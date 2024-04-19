@@ -22,23 +22,33 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ItemDatabase = NewObject<UItemDatabase>(this, TEXT("ItemDatabase"));
+	//*
+	try {
+		ItemDatabase = UItemDatabase::GetInstance();
 
-	if (ItemDatabase)
-	{
-		ItemDatabase->LoadItemsFromJson();
-		const TArray<FItemData>& ItemsArray = ItemDatabase->Items;
-
-		for (const FItemData& Item : ItemsArray)
+		if (ItemDatabase)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("ItemName: %s"), *Item.ItemName.ToString());
-			UE_LOG(LogTemp, Warning, TEXT("Quality: %s"), *Item.Quality);
-			UE_LOG(LogTemp, Warning, TEXT("Level: %d"), Item.Level);
-			UE_LOG(LogTemp, Warning, TEXT("ItemType: %s"), *Item.ItemType);
-			UE_LOG(LogTemp, Warning, TEXT("UniqueEquipped: %s"), Item.UniqueEquipped ? TEXT("True") : TEXT("False"));
-			UE_LOG(LogTemp, Warning, TEXT("Mesh: %s"), *Item.Mesh);
+			const TArray<FItemData>& ItemsArray = ItemDatabase->Items;
+
+			for (const FItemData& Item : ItemsArray)
+			{
+				UE_LOG(LogTemp, Log, TEXT("ItemGuid: %s"), *Item.ItemGuid.ToString());
+				UE_LOG(LogTemp, Warning, TEXT("ItemName: %s"), *Item.ItemName.ToString());
+				UE_LOG(LogTemp, Warning, TEXT("Quality: %s"), *Item.Quality);
+				UE_LOG(LogTemp, Warning, TEXT("Level: %d"), Item.Level);
+				UE_LOG(LogTemp, Warning, TEXT("ItemType: %s"), *Item.ItemType);
+				UE_LOG(LogTemp, Warning, TEXT("UniqueEquipped: %s"), Item.UniqueEquipped ? TEXT("True") : TEXT("False"));
+				UE_LOG(LogTemp, Warning, TEXT("Mesh: %s"), *Item.Mesh);
+			}
 		}
 	}
+	catch (const std::exception& e) {
+		UE_LOG(LogTemp, Warning, TEXT("Standard library exception caught: %s"), UTF8_TO_TCHAR(e.what()));
+	}
+	catch (...) {
+		UE_LOG(LogTemp, Warning, TEXT("Unknown exception caught"));
+	}
+	//*/
 
 	InventoryWidget = CreateWidget<UInventoryWidget>(Cast<APlayerController>(GetController()), InventoryWidgetClass);
 	InteractWidget = CreateWidget(Cast<APlayerController>(GetController()), InteractWidgetClass);
@@ -62,10 +72,11 @@ void AMyCharacter::HandleLook(const FInputActionValue& ActionValue)
 
 void AMyCharacter::HandleInteract()
 {
-	if (Cast<AItem>(InteractHitResult.GetActor())) {
+	AItem* InteractedItem = Cast<AItem>(InteractHitResult.GetActor());
+	if (InteractedItem) {
 		FItemData* Data = ItemDatabase->Items.FindByPredicate([&](const FItemData& ItemData)
 			{
-				return ItemData.Class == InteractHitResult.GetActor()->GetClass();
+				return ItemData.ItemGuid == InteractedItem->ItemGuid;
 			});
 		Inventory.Emplace(*Data);
 		InteractHitResult.GetActor()->Destroy();
