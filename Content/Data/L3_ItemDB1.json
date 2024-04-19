@@ -1,0 +1,82 @@
+[
+  {
+    "Name": "awdaw",
+    "Quality": "Comawdawmon",
+    "Level": 4230,
+    "IType": "hehgse2e",
+    "UniqueEquipped": true,
+    "Mesh": "awdaw"
+  },
+  {
+    "Name": "ssefourne",
+    "Quality": "Leawawgendary",
+    "Level": 1320,
+    "IType": "aw",
+    "UniqueEquipped": true,
+    "Mesh": "Pyawdmid"
+  },
+  {
+    "Name": "Ashkandur",
+    "Quality": "Epic",
+    "Level": 456,
+    "IType": "2H Sword",
+    "UniqueEquipped": true,
+    "Mesh": "Pyramid"
+  },
+  {
+    "Name": "Tiny Basket",
+    "Quality": "Uncommon",
+    "Level": 23,
+    "IType": "Off-hand",
+    "UniqueEquipped": true,
+    "Mesh": "Pyramid"
+  },
+  {
+    "Name": "Apparatus of Khaz\u0027goroth",
+    "Quality": "Epic",
+    "Level": 256,
+    "IType": "Trinket",
+    "UniqueEquipped": false,
+    "Mesh": "Sphere"
+  },
+  {
+    "Name": "Common Leather Boots",
+    "Quality": "Common",
+    "Level": 674,
+    "IType": "Boots",
+    "UniqueEquipped": false,
+    "Mesh": "Cube"
+  },
+  {
+    "Name": "Pebble",
+    "Quality": "Poor",
+    "Level": 89,
+    "IType": "Junk",
+    "UniqueEquipped": true,
+    "Mesh": "Sphere"
+  },
+  {
+    "Name": "Undaunting Breastplate",
+    "Quality": "Rare",
+    "Level": 340,
+    "IType": "Chest",
+    "UniqueEquipped": false,
+    "Mesh": "Cube"
+  },
+  {
+    "Name": "Shield of Lordaeron",
+    "Quality": "Rare",
+    "Level": 211,
+    "IType": "Shield",
+    "UniqueEquipped": true,
+    "Mesh": "Cube"
+  },
+  {
+    "Name": "sfs",
+    "Quality": "Common",
+    "Level": 2,
+    "IType": "sefse",
+    "UniqueEquipped": false,
+    "Mesh": "Sphere"
+  }
+]

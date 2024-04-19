@@ -9,11 +9,26 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Blueprintable, Category = "Item")
 class L3_API AItem : public AStaticMeshActor
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
 public:
-	FGuid ItemGuid;
+    AItem();
+
+    FGuid ItemGuid;
+
+protected:
+    virtual void PostInitializeComponents() override;
+
+private:
+    UPROPERTY()
+    UStaticMesh* CubeMesh;
+
+    UPROPERTY()
+    UMaterial* WorldGridMaterial;
+
+    UPROPERTY(VisibleAnywhere)
+    UPrimitiveComponent* CollisionComponent;
 };

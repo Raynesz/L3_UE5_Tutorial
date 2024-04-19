@@ -22,33 +22,7 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//*
-	try {
-		ItemDatabase = UItemDatabase::GetInstance();
-
-		if (ItemDatabase)
-		{
-			const TArray<FItemData>& ItemsArray = ItemDatabase->Items;
-
-			for (const FItemData& Item : ItemsArray)
-			{
-				UE_LOG(LogTemp, Log, TEXT("ItemGuid: %s"), *Item.ItemGuid.ToString());
-				UE_LOG(LogTemp, Warning, TEXT("ItemName: %s"), *Item.ItemName.ToString());
-				UE_LOG(LogTemp, Warning, TEXT("Quality: %s"), *Item.Quality);
-				UE_LOG(LogTemp, Warning, TEXT("Level: %d"), Item.Level);
-				UE_LOG(LogTemp, Warning, TEXT("ItemType: %s"), *Item.ItemType);
-				UE_LOG(LogTemp, Warning, TEXT("UniqueEquipped: %s"), Item.UniqueEquipped ? TEXT("True") : TEXT("False"));
-				UE_LOG(LogTemp, Warning, TEXT("Mesh: %s"), *Item.Mesh);
-			}
-		}
-	}
-	catch (const std::exception& e) {
-		UE_LOG(LogTemp, Warning, TEXT("Standard library exception caught: %s"), UTF8_TO_TCHAR(e.what()));
-	}
-	catch (...) {
-		UE_LOG(LogTemp, Warning, TEXT("Unknown exception caught"));
-	}
-	//*/
+	ItemDatabase = UItemDatabase::GetInstance();
 
 	InventoryWidget = CreateWidget<UInventoryWidget>(Cast<APlayerController>(GetController()), InventoryWidgetClass);
 	InteractWidget = CreateWidget(Cast<APlayerController>(GetController()), InteractWidgetClass);
