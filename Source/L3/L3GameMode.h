@@ -15,5 +15,7 @@ class L3_API AL3GameMode : public AGameMode
 	GENERATED_BODY()
 	
 public:
+	AL3GameMode();
+
 	virtual void BeginPlay() override;
 };
