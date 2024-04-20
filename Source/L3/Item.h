@@ -32,6 +32,21 @@ public:
 
     UPROPERTY()
     static UMaterial* LegendaryMaterial;
+
+    UPROPERTY()
+    static UMaterial* EpicMaterial;
+
+    UPROPERTY()
+    static UMaterial* RareMaterial;
+
+    UPROPERTY()
+    static UMaterial* UncommonMaterial;
+
+    UPROPERTY()
+    static UMaterial* CommonMaterial;
+
+    UPROPERTY()
+    static UMaterial* PoorMaterial;
 };
 
 UCLASS(BlueprintType, Blueprintable, Category = "Item")

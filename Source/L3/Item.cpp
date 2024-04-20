@@ -13,6 +13,11 @@ UStaticMesh* UItemMeshAndMaterials::ConeMesh = nullptr;
 UMaterial* UItemMeshAndMaterials::WorldGridMaterial = nullptr;
 UMaterial* UItemMeshAndMaterials::RedMaterial = nullptr;
 UMaterial* UItemMeshAndMaterials::LegendaryMaterial = nullptr;
+UMaterial* UItemMeshAndMaterials::EpicMaterial = nullptr;
+UMaterial* UItemMeshAndMaterials::RareMaterial = nullptr;
+UMaterial* UItemMeshAndMaterials::UncommonMaterial = nullptr;
+UMaterial* UItemMeshAndMaterials::CommonMaterial = nullptr;
+UMaterial* UItemMeshAndMaterials::PoorMaterial = nullptr;
 
 void UItemMeshAndMaterials::Initialize()
 {
@@ -51,6 +56,36 @@ void UItemMeshAndMaterials::Initialize()
     {
         LegendaryMaterial = LegendaryMaterialAsset.Object;
     }
+
+    static ConstructorHelpers::FObjectFinder<UMaterial> EpicMaterialAsset(TEXT("/Game/Material/Epic.Epic"));
+    if (EpicMaterialAsset.Succeeded())
+    {
+        EpicMaterial = EpicMaterialAsset.Object;
+    }
+
+    static ConstructorHelpers::FObjectFinder<UMaterial> RareMaterialAsset(TEXT("/Game/Material/Rare.Rare"));
+    if (RareMaterialAsset.Succeeded())
+    {
+        RareMaterial = RareMaterialAsset.Object;
+    }
+
+    static ConstructorHelpers::FObjectFinder<UMaterial> UncommonMaterialAsset(TEXT("/Game/Material/Uncommon.Uncommon"));
+    if (UncommonMaterialAsset.Succeeded())
+    {
+        UncommonMaterial = UncommonMaterialAsset.Object;
+    }
+
+    static ConstructorHelpers::FObjectFinder<UMaterial> CommonMaterialAsset(TEXT("/Game/Material/Common.Common"));
+    if (CommonMaterialAsset.Succeeded())
+    {
+        CommonMaterial = CommonMaterialAsset.Object;
+    }
+
+    static ConstructorHelpers::FObjectFinder<UMaterial> PoorMaterialAsset(TEXT("/Game/Material/Poor.Poor"));
+    if (PoorMaterialAsset.Succeeded())
+    {
+        PoorMaterial = PoorMaterialAsset.Object;
+    }
 }
 
 AItem::AItem()
@@ -85,6 +120,36 @@ void AItem::SetItemProperties(FGuid Guid, FString Quality, FString Mesh)
         if (UItemMeshAndMaterials::LegendaryMaterial)
         {
             GetStaticMeshComponent()->SetMaterial(0, UItemMeshAndMaterials::LegendaryMaterial);
+        }
+    }
+    else if (Quality == "Epic") {
+        if (UItemMeshAndMaterials::EpicMaterial)
+        {
+            GetStaticMeshComponent()->SetMaterial(0, UItemMeshAndMaterials::EpicMaterial);
+        }
+    }
+    else if (Quality == "Rare") {
+        if (UItemMeshAndMaterials::RareMaterial)
+        {
+            GetStaticMeshComponent()->SetMaterial(0, UItemMeshAndMaterials::RareMaterial);
+        }
+    }
+    else if (Quality == "Uncommon") {
+        if (UItemMeshAndMaterials::UncommonMaterial)
+        {
+            GetStaticMeshComponent()->SetMaterial(0, UItemMeshAndMaterials::UncommonMaterial);
+        }
+    }
+    else if (Quality == "Common") {
+        if (UItemMeshAndMaterials::CommonMaterial)
+        {
+            GetStaticMeshComponent()->SetMaterial(0, UItemMeshAndMaterials::CommonMaterial);
+        }
+    }
+    else if (Quality == "Poor") {
+        if (UItemMeshAndMaterials::PoorMaterial)
+        {
+            GetStaticMeshComponent()->SetMaterial(0, UItemMeshAndMaterials::PoorMaterial);
         }
     }
     else {
