@@ -10,45 +10,6 @@
  * 
  */
 
-class L3_API UItemMeshAndMaterials : public UObject
-{
-public:
-    static void Initialize();
-
-    UPROPERTY()
-    static UStaticMesh* CubeMesh;
-
-    UPROPERTY()
-    static UStaticMesh* SphereMesh;
-
-    UPROPERTY()
-    static UStaticMesh* ConeMesh;
-
-    UPROPERTY()
-    static UMaterial* WorldGridMaterial;
-
-    UPROPERTY()
-    static UMaterial* RedMaterial;
-
-    UPROPERTY()
-    static UMaterial* LegendaryMaterial;
-
-    UPROPERTY()
-    static UMaterial* EpicMaterial;
-
-    UPROPERTY()
-    static UMaterial* RareMaterial;
-
-    UPROPERTY()
-    static UMaterial* UncommonMaterial;
-
-    UPROPERTY()
-    static UMaterial* CommonMaterial;
-
-    UPROPERTY()
-    static UMaterial* PoorMaterial;
-};
-
 UCLASS(BlueprintType, Blueprintable, Category = "Item")
 class L3_API AItem : public AStaticMeshActor
 {

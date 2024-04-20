@@ -4,10 +4,11 @@
 #include "L3GameMode.h"
 #include "ItemDatabase.h"
 #include "Item.h"
+#include "ItemMeshAndMaterials.h"
 
 AL3GameMode::AL3GameMode() : AGameMode()
 {
-	UItemMeshAndMaterials::Initialize();
+	ItemMeshAndMaterials::Initialize();
 }
 
 void AL3GameMode::BeginPlay()
