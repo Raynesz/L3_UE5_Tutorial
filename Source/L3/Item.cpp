@@ -5,7 +5,6 @@
 #include "Engine/StaticMesh.h"
 #include "Materials/Material.h"
 #include "Components/BoxComponent.h"
-#include "ItemDatabase.h"
 #include "ItemMeshAndMaterials.h"
 
 AItem::AItem()

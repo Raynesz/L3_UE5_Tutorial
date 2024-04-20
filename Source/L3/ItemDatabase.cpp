@@ -7,30 +7,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Item.h"
 
-UItemDatabase* UItemDatabase::Instance = nullptr;
-
-UItemDatabase* UItemDatabase::GetInstance()
-{
-    if (Instance == nullptr)
-    {
-        Instance = NewObject<UItemDatabase>();
-    }
-    return Instance;
-}
-
-void UItemDatabase::DestroyItemDatabase()
-{
-    if (Instance != nullptr)
-    {
-        Instance->ConditionalBeginDestroy();
-        Instance = nullptr;
-    }
-}
-
-const TArray<FItemData>& UItemDatabase::GetItems() const
-{
-    return Items;
-}
+TArray<FItemData> UItemDatabase::Items;
 
 void UItemDatabase::LoadItemsFromJson()
 {
@@ -77,4 +54,9 @@ void UItemDatabase::LoadItemsFromJson()
     catch (...) {
         UE_LOG(LogTemp, Warning, TEXT("Unknown exception caught"));
     }
+}
+
+void UItemDatabase::ClearItemDatabase()
+{
+    Items.Empty();
 }

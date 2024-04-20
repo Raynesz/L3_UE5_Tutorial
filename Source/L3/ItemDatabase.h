@@ -54,23 +54,13 @@ UCLASS()
 class L3_API UItemDatabase : public UObject
 {
 	GENERATED_BODY()
-	
+
 public:
-	UPROPERTY(EditAnywhere)
-	TArray<FItemData> Items;
+	static TArray<FItemData> Items;
 
-	UFUNCTION(BlueprintCallable, Category = "Item Database")
-	const TArray<FItemData>& GetItems() const;
+	UFUNCTION()
+	static void LoadItemsFromJson();
 
-	UFUNCTION(BlueprintCallable)
-	void LoadItemsFromJson();
-
-	UFUNCTION(BlueprintCallable)
-	static UItemDatabase* GetInstance();
-
-	UFUNCTION(BlueprintCallable)
-	void DestroyItemDatabase();
-
-private:
-	static UItemDatabase* Instance;
+	UFUNCTION()
+	static void ClearItemDatabase();
 };

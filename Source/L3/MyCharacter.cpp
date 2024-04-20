@@ -22,8 +22,6 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ItemDatabase = UItemDatabase::GetInstance();
-
 	InventoryWidget = CreateWidget<UInventoryWidget>(Cast<APlayerController>(GetController()), InventoryWidgetClass);
 	InteractWidget = CreateWidget(Cast<APlayerController>(GetController()), InteractWidgetClass);
 	InventoryWidget->AddToViewport(0);
@@ -48,7 +46,7 @@ void AMyCharacter::HandleInteract()
 {
 	AItem* InteractedItem = Cast<AItem>(InteractHitResult.GetActor());
 	if (InteractedItem) {
-		FItemData* Data = ItemDatabase->Items.FindByPredicate([&](const FItemData& ItemData)
+		FItemData* Data = UItemDatabase::Items.FindByPredicate([&](const FItemData& ItemData)
 			{
 				return ItemData.ItemGuid == InteractedItem->ItemGuid;
 			});
