@@ -15,6 +15,7 @@ void UInventoryEntry::NativeOnListItemObjectSet(UObject* ListItemObject)
 
 	UItemUIObject* UIItem = Cast<UItemUIObject>(ListItemObject);
 	ItemName->SetText(FText::FromString(UIItem->ItemData.ItemName.ToString()));
+	ItemLevel->SetText(FText::AsNumber(UIItem->ItemData.Level));
 
 	DropButton->OnClicked.Clear();
 	DropButton->OnClicked.AddDynamic(this, &UInventoryEntry::DropItem);

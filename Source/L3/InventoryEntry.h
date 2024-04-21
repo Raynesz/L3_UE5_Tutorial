@@ -23,6 +23,9 @@ private:
 	UTextBlock* ItemName;
 
 	UPROPERTY(meta = (BindWidget))
+	UTextBlock* ItemLevel;
+
+	UPROPERTY(meta = (BindWidget))
 	UButton* DropButton;
 
 	UFUNCTION()
