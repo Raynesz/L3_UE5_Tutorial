@@ -22,6 +22,8 @@ public:
 
     void SetItemProperties(FGuid Guid, FString Quality, FString Mesh);
 
+    void SetItemProperties(FGuid Guid);
+
 protected:
     virtual void PostInitializeComponents() override;
 

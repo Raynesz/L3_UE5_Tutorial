@@ -24,12 +24,11 @@ void UInventoryEntry::DropItem()
 {
 	AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetOwningPlayer()->GetPawn());
 	FItemData ItemData = GetListItem<UItemUIObject>()->ItemData;
-	//GetWorld()->SpawnActor<AItem>(ItemData.Class, MyCharacter->InteractVectorEnd, FRotator());
 	AItem* SpawnedItem = GetWorld()->SpawnActor<AItem>(AItem::StaticClass(), MyCharacter->InteractVectorEnd, FRotator());
-	//if (SpawnedItem)
-	//{
-	//	SpawnedItem->ItemGuid = ItemData.ItemGuid;
-	//}
+	if (SpawnedItem)
+	{
+		SpawnedItem->SetItemProperties(ItemData.ItemGuid);
+	}
 
 	MyCharacter->Inventory.Remove(ItemData);
 	MyCharacter->InventoryWidget->RefreshInventory(MyCharacter->Inventory);

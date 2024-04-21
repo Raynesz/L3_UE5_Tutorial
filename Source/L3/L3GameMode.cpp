@@ -23,7 +23,9 @@ void AL3GameMode::BeginPlay()
 		for (const FItemData& Item : UItemDatabase::Items)
 		{
 			AItem* SpawnedItem = GetWorld()->SpawnActor<AItem>(AItem::StaticClass(), FVector(0.f, 0.f, 200.f), FRotator());
-			SpawnedItem->SetItemProperties(Item.ItemGuid, Item.Quality, Item.Mesh);
+			if (SpawnedItem) {
+				SpawnedItem->SetItemProperties(Item.ItemGuid, Item.Quality, Item.Mesh);
+			}
 
 			UE_LOG(LogTemp, Log, TEXT("ItemGuid: %s"), *Item.ItemGuid.ToString());
 			UE_LOG(LogTemp, Warning, TEXT("ItemName: %s"), *Item.ItemName.ToString());

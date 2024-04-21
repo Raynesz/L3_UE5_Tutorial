@@ -6,6 +6,7 @@
 #include "Materials/Material.h"
 #include "Components/BoxComponent.h"
 #include "ItemMeshAndMaterials.h"
+#include "ItemDatabase.h"
 
 AItem::AItem()
 {   
@@ -75,6 +76,78 @@ void AItem::SetItemProperties(FGuid Guid, FString Quality, FString Mesh)
         if (ItemMeshAndMaterials::WorldGridMaterial)
         {
             GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::WorldGridMaterial);
+        }
+    }
+}
+
+void AItem::SetItemProperties(FGuid Guid)
+{
+    ItemGuid = Guid;
+
+    for (const FItemData& Item : UItemDatabase::Items)
+    {
+        if (Item.ItemGuid == Guid) {
+            if (Item.Mesh == "Sphere") {
+                if (ItemMeshAndMaterials::SphereMesh)
+                {
+                    GetStaticMeshComponent()->SetStaticMesh(ItemMeshAndMaterials::SphereMesh);
+                }
+            }
+            else if (Item.Mesh == "Pyramid") {
+                if (ItemMeshAndMaterials::ConeMesh)
+                {
+                    GetStaticMeshComponent()->SetStaticMesh(ItemMeshAndMaterials::ConeMesh);
+                }
+            }
+            else {
+                if (ItemMeshAndMaterials::CubeMesh)
+                {
+                    GetStaticMeshComponent()->SetStaticMesh(ItemMeshAndMaterials::CubeMesh);
+                }
+            }
+
+            if (Item.Quality == "Legendary") {
+                if (ItemMeshAndMaterials::LegendaryMaterial)
+                {
+                    GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::LegendaryMaterial);
+                }
+            }
+            else if (Item.Quality == "Epic") {
+                if (ItemMeshAndMaterials::EpicMaterial)
+                {
+                    GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::EpicMaterial);
+                }
+            }
+            else if (Item.Quality == "Rare") {
+                if (ItemMeshAndMaterials::RareMaterial)
+                {
+                    GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::RareMaterial);
+                }
+            }
+            else if (Item.Quality == "Uncommon") {
+                if (ItemMeshAndMaterials::UncommonMaterial)
+                {
+                    GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::UncommonMaterial);
+                }
+            }
+            else if (Item.Quality == "Common") {
+                if (ItemMeshAndMaterials::CommonMaterial)
+                {
+                    GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::CommonMaterial);
+                }
+            }
+            else if (Item.Quality == "Poor") {
+                if (ItemMeshAndMaterials::PoorMaterial)
+                {
+                    GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::PoorMaterial);
+                }
+            }
+            else {
+                if (ItemMeshAndMaterials::WorldGridMaterial)
+                {
+                    GetStaticMeshComponent()->SetMaterial(0, ItemMeshAndMaterials::WorldGridMaterial);
+                }
+            }
         }
     }
 }

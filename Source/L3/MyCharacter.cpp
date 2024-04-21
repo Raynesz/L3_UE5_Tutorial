@@ -44,14 +44,27 @@ void AMyCharacter::HandleLook(const FInputActionValue& ActionValue)
 
 void AMyCharacter::HandleInteract()
 {
-	AItem* InteractedItem = Cast<AItem>(InteractHitResult.GetActor());
-	if (InteractedItem) {
-		FItemData* Data = UItemDatabase::Items.FindByPredicate([&](const FItemData& ItemData)
-			{
-				return ItemData.ItemGuid == InteractedItem->ItemGuid;
-			});
-		Inventory.Emplace(*Data);
-		InteractHitResult.GetActor()->Destroy();
+	try {
+		AItem* InteractedItem = Cast<AItem>(InteractHitResult.GetActor());
+		if (InteractedItem) {
+			FItemData* Data = UItemDatabase::Items.FindByPredicate([&](const FItemData& ItemData)
+				{
+					return ItemData.ItemGuid == InteractedItem->ItemGuid;
+				});
+			if (Data) {
+				Inventory.Emplace(*Data);
+				InteractedItem->Destroy();
+			}
+			else {
+				UE_LOG(LogTemp, Warning, TEXT("Item data not found"));
+			}
+		}
+	}
+	catch (const std::exception& e) {
+		UE_LOG(LogTemp, Error, TEXT("Exception caught: %s"), UTF8_TO_TCHAR(e.what()));
+	}
+	catch (...) {
+		UE_LOG(LogTemp, Error, TEXT("Unknown exception caught"));
 	}
 }
 
