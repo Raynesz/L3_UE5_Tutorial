@@ -45,6 +45,12 @@ public:
 	UInputAction* InventoryAction;
 
 	UPROPERTY(EditDefaultsOnly)
+	UInputAction* RestartAction;
+
+	UPROPERTY(EditDefaultsOnly)
+	UInputAction* QuitAction;
+
+	UPROPERTY(EditDefaultsOnly)
 	UInputMappingContext* InputMappingContext;
 
 	UPROPERTY(EditDefaultsOnly)
@@ -57,7 +63,7 @@ public:
 	TSubclassOf<UUserWidget> InventoryWidgetClass;
 
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<UUserWidget> InventoryHintWidgetClass;
+	TSubclassOf<UUserWidget> UIHintWidgetClass;
 
 	UPROPERTY()
 	UInventoryWidget* InventoryWidget;
@@ -66,7 +72,7 @@ public:
 	UUserWidget* InteractWidget;
 
 	UPROPERTY()
-	UUserWidget* InventoryHintWidget;
+	UUserWidget* UIHintWidget;
 
 	UPROPERTY()
 	UUserWidget* CrosshairWidget;
@@ -87,6 +93,9 @@ private:
 	void HandleInteract();
 	void InteractCheck();
 	void ToggleInventory();
+
+	void RestartGame();
+	void QuitGame();
 
 	FHitResult InteractHitResult;
 	FVector ViewVector;
