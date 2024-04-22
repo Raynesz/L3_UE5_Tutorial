@@ -51,6 +51,9 @@ public:
 	TSubclassOf<UUserWidget> InteractWidgetClass;
 
 	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UUserWidget> CrosshairWidgetClass;
+
+	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UUserWidget> InventoryWidgetClass;
 
 	UPROPERTY()
@@ -58,6 +61,9 @@ public:
 
 	UPROPERTY()
 	UUserWidget* InteractWidget;
+
+	UPROPERTY()
+	UUserWidget* CrosshairWidget;
 
 	UItemDatabase* ItemDatabase;
 

@@ -24,8 +24,10 @@ void AMyCharacter::BeginPlay()
 
 	InventoryWidget = CreateWidget<UInventoryWidget>(Cast<APlayerController>(GetController()), InventoryWidgetClass);
 	InteractWidget = CreateWidget(Cast<APlayerController>(GetController()), InteractWidgetClass);
-	InventoryWidget->AddToViewport(0);
+	CrosshairWidget = CreateWidget(Cast<APlayerController>(GetController()), CrosshairWidgetClass);
 	InteractWidget->AddToViewport(0);
+	CrosshairWidget->AddToViewport(0);
+	InventoryWidget->AddToViewport(1);
 	InventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
 	InteractWidget->SetVisibility(ESlateVisibility::Collapsed);
 }
@@ -52,6 +54,7 @@ void AMyCharacter::HandleInteract()
 			});
 		if (Data) {
 			Inventory.Emplace(*Data);
+			InventoryWidget->RefreshInventory(Inventory);
 			InteractedItem->Destroy();
 		}
 	}
@@ -78,6 +81,7 @@ void AMyCharacter::ToggleInventory()
 {
 	if (!InventoryWidget->IsVisible()) {
 		InventoryWidget->SetVisibility(ESlateVisibility::Visible);
+		CrosshairWidget->SetVisibility(ESlateVisibility::Collapsed);
 		InventoryWidget->RefreshInventory(Inventory);
 
 		Cast<APlayerController>(GetController())->SetInputMode(FInputModeGameAndUI());
@@ -86,6 +90,7 @@ void AMyCharacter::ToggleInventory()
 	}
 	else {
 		InventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
+		CrosshairWidget->SetVisibility(ESlateVisibility::Visible);
 
 		Cast<APlayerController>(GetController())->SetInputMode(FInputModeGameOnly());
 		Cast<APlayerController>(GetController())->SetCinematicMode(false, true, true);
