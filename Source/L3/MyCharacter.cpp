@@ -25,8 +25,10 @@ void AMyCharacter::BeginPlay()
 	InventoryWidget = CreateWidget<UInventoryWidget>(Cast<APlayerController>(GetController()), InventoryWidgetClass);
 	InteractWidget = CreateWidget(Cast<APlayerController>(GetController()), InteractWidgetClass);
 	CrosshairWidget = CreateWidget(Cast<APlayerController>(GetController()), CrosshairWidgetClass);
+	InventoryHintWidget = CreateWidget(Cast<APlayerController>(GetController()), InventoryHintWidgetClass);
 	InteractWidget->AddToViewport(0);
 	CrosshairWidget->AddToViewport(0);
+	InventoryHintWidget->AddToViewport(0);
 	InventoryWidget->AddToViewport(1);
 	InventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
 	InteractWidget->SetVisibility(ESlateVisibility::Collapsed);

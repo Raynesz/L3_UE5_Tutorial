@@ -56,11 +56,17 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UUserWidget> InventoryWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UUserWidget> InventoryHintWidgetClass;
+
 	UPROPERTY()
 	UInventoryWidget* InventoryWidget;
 
 	UPROPERTY()
 	UUserWidget* InteractWidget;
+
+	UPROPERTY()
+	UUserWidget* InventoryHintWidget;
 
 	UPROPERTY()
 	UUserWidget* CrosshairWidget;

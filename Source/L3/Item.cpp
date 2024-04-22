@@ -23,7 +23,7 @@ void AItem::SetItemProperties(FGuid Guid, FString Quality, FString Mesh)
             GetStaticMeshComponent()->SetStaticMesh(ItemMeshAndMaterials::SphereMesh);
         }
     }
-    else if (Mesh == "Pyramid") {
+    else if (Mesh == "Cone") {
         if (ItemMeshAndMaterials::ConeMesh)
         {
             GetStaticMeshComponent()->SetStaticMesh(ItemMeshAndMaterials::ConeMesh);
@@ -93,7 +93,7 @@ void AItem::SetItemProperties(FGuid Guid)
                     GetStaticMeshComponent()->SetStaticMesh(ItemMeshAndMaterials::SphereMesh);
                 }
             }
-            else if (Item.Mesh == "Pyramid") {
+            else if (Item.Mesh == "Cone") {
                 if (ItemMeshAndMaterials::ConeMesh)
                 {
                     GetStaticMeshComponent()->SetStaticMesh(ItemMeshAndMaterials::ConeMesh);
