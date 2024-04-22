@@ -48,11 +48,27 @@
     "Mesh": "Sphere"
   },
   {
-    "Name": "Dragonwrath",
+    "Name": "Yulon\u0027s Cloak",
     "Quality": "Legendary",
     "Level": 150,
-    "IType": "Staff",
+    "IType": "Back",
     "UniqueEquipped": true,
+    "Mesh": "Cube"
+  },
+  {
+    "Name": "Blunderbass",
+    "Quality": "Rare",
+    "Level": 15,
+    "IType": "Gun",
+    "UniqueEquipped": false,
     "Mesh": "Pyramid"
+  },
+  {
+    "Name": "Nzoth\u0027s Last Eye",
+    "Quality": "Epic",
+    "Level": 345,
+    "IType": "Trinket",
+    "UniqueEquipped": true,
+    "Mesh": "Sphere"
   }
 ]
