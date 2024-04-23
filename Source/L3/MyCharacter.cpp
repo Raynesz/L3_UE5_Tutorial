@@ -142,6 +142,10 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 }
 
 void AMyCharacter::RestartGame() {
+	Cast<APlayerController>(GetController())->SetInputMode(FInputModeGameOnly());
+	Cast<APlayerController>(GetController())->SetCinematicMode(false, true, true);
+	Cast<APlayerController>(GetController())->bShowMouseCursor = false;
+
 	AL3GameMode* CurrentGameMode = Cast<AL3GameMode>(UGameplayStatics::GetGameMode(GetWorld()));
 	CurrentGameMode->RestartGame();
 }
