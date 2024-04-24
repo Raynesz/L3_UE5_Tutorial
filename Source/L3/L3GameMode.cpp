@@ -1,6 +1,3 @@
-// Copyright 2024 Raynesz
-
-
 #include "L3GameMode.h"
 #include "ItemDatabase.h"
 #include "Item.h"

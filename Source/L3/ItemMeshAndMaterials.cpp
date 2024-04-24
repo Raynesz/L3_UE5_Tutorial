@@ -1,5 +1,3 @@
-// Copyright 2024 Raynesz
-
 #include "ItemMeshAndMaterials.h"
 
 UStaticMesh* ItemMeshAndMaterials::CubeMesh = nullptr;

@@ -1,5 +1,3 @@
-// Copyright 2024 Raynesz
-
 #include "ItemDatabase.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"

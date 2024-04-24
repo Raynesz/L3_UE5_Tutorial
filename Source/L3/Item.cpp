@@ -1,6 +1,3 @@
-// Copyright 2024 Raynesz
-
-
 #include "Item.h"
 #include "Engine/StaticMesh.h"
 #include "Materials/Material.h"

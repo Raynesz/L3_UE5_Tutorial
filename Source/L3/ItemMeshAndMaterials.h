@@ -1,12 +1,7 @@
-// Copyright 2024 Raynesz
-
 #pragma once
 
 #include "CoreMinimal.h"
 
-/**
- * 
- */
 class L3_API ItemMeshAndMaterials
 {
 public:

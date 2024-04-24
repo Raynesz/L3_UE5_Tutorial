@@ -1,6 +1,3 @@
-// Copyright 2024 Raynesz
-
-
 #include "InventoryWidget.h"
 #include "Components/ListView.h"
 

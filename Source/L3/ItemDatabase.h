@@ -1,5 +1,3 @@
-// Copyright 2024 Raynesz
-
 #pragma once
 
 #include "CoreMinimal.h"

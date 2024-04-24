@@ -1,6 +1,3 @@
-// Copyright 2024 Raynesz
-
-
 #include "InventoryEntry.h"
 #include "ItemDatabase.h"
 #include "Components/TextBlock.h"
